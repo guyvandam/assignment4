@@ -8,6 +8,7 @@ public interface Expression {
     // is thrown.
     double evaluate(Map<String, Double> assignment) throws Exception;
 
+
     // A convenience method. Like the `evaluate(assignment)` method above,
     // but uses an empty assignment.
     double evaluate() throws Exception;
@@ -22,4 +23,11 @@ public interface Expression {
     // var are replaced with the provided expression (Does not modify the
     // current expression).
     Expression assign(String var, Expression expression);
+
+    // Returns the expression tree resulting from differentiating
+    // the current expression relative to variable `var`.
+    Expression differentiate(String var);
+
+    // Returned a simplified version of the current expression.
+    Expression simplify();
 }
