@@ -52,6 +52,6 @@ public class Const implements Expression {
 
     @Override
     public Expression simplify() {
-        return this;
+        return new Const(this.getVar(),this.getValue());
     }
 }

@@ -39,6 +39,6 @@ public class Sin extends UnaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        return null;
+        return new Sin(super.getExpression().simplify());
     }
 }

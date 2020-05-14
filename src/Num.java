@@ -36,8 +36,8 @@ public class Num implements Expression {
 
     @Override
     public String toString() {
-//        return this.getNum() == Math.floor(this.getNum()) ? String.valueOf((int) this.getNum()) : String.valueOf(this.getNum());
-        return String.valueOf(this.getNum());
+        return this.getNum() == Math.floor(this.getNum()) ? String.valueOf((int) this.getNum()) : String.valueOf(this.getNum());
+//        return String.valueOf(this.getNum());
     }
 
     @Override

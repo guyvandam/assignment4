@@ -74,8 +74,10 @@ public class Plus extends BinaryExpression implements Expression {
 //                return super.getY();
 //            }
 //            return new Plus(super.getX(), super.getY());
-            return simplifiedX.equals(new Num(0)) ? simplifiedY :
-                    (simplifiedY.equals(new Num(0)) ? simplifiedX : new Plus(simplifiedX, simplifiedY));
+//            return simplifiedX.toString().equals("0.0") ? simplifiedY :
+//                    (simplifiedY.toString().equals("0.0") ? simplifiedX : new Plus(simplifiedX, simplifiedY));
+            return super.isNum(simplifiedX, 0) ? simplifiedY :
+                    (super.isNum(simplifiedY, 0) ? simplifiedX : new Plus(simplifiedX, simplifiedY));
         }
 
     }

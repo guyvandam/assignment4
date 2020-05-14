@@ -57,9 +57,12 @@ public class Log extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-            return simplifiedX.equals(simplifiedY) ? new Num(1) :
-                    (simplifiedX.equals(new Num(1)) ? simplifiedY :
-                            simplifiedY.equals(new Num(1)) ? new Num(0) : new Log(simplifiedX, simplifiedY));
+//            return simplifiedX.toString().equals(simplifiedY.toString()) ? new Num(1) :
+//                    (simplifiedX.toString().equals("1.0") ? simplifiedY :
+//                            simplifiedY.toString().equals("1.0") ? new Num(0) : new Log(simplifiedX, simplifiedY));
+            return !super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1) :
+                    (super.isNum(simplifiedX, 1) ? simplifiedY :
+                            super.isNum(simplifiedY, 1) ? new Num(0) : new Log(simplifiedX, simplifiedY));
         }
     }
 }

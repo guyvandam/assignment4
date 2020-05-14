@@ -1,3 +1,5 @@
+import org.w3c.dom.css.CSSUnknownRule;
+
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -45,8 +47,10 @@ public class Minus extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-            return simplifiedX.equals(new Num(0)) ? new Neg(simplifiedY) :
-                    (simplifiedY.equals(new Num(0)) ? simplifiedX : new Minus(simplifiedX, simplifiedY));
+//            return simplifiedX.equals(new Num(0)) ? new Neg(simplifiedY) :
+//                    (simplifiedY.equals(new Num(0)) ? simplifiedX : new Minus(simplifiedX, simplifiedY));
+            return super.isNum(simplifiedX, 0) ? new Neg(simplifiedY) :
+                    (super.isNum(simplifiedY, 0) ? simplifiedX : new Minus(simplifiedX, simplifiedY));
         }
     }
 }

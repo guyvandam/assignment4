@@ -32,6 +32,14 @@ public abstract class BinaryExpression extends BaseExpression {
         return temp;
     }
 
+//    public boolean isNumX(double num) {
+//        return super.isNum(this.getX(), num);
+//    }
+//
+//    public boolean isNumY(double num) {
+//        return super.isNum(this.getY(), num);
+//    }
+
 //    public BinaryExpression binaryAssign(String var, Expression expression) {
 ////        if (var != null && expression != null) {
 ////            System.out.println(var);

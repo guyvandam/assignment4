@@ -47,8 +47,10 @@ public class Div extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-            return simplifiedX.equals(simplifiedY) ? new Num(1) :
-                    (simplifiedY.equals(new Num(1)) ? simplifiedX : new Div(simplifiedX, simplifiedY));
+//            return simplifiedX.toString().equals(simplifiedY.toString()) ? new Num(1) :
+//                    (simplifiedY.toString().equals("1.0") ? simplifiedX : new Div(simplifiedX, simplifiedY));
+            return !super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1) :
+                    (super.isNum(simplifiedY,1) ? simplifiedX : new Div(simplifiedX, simplifiedY));
         }
     }
 }

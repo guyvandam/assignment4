@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+
 public class Mult extends BinaryExpression implements Expression {
     public Mult(Expression x, Expression y) {
         super(x, y);
@@ -45,12 +46,13 @@ public class Mult extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-            if (simplifiedX.equals(new Num(0))) {
-                System.out.println("in");
-            }
-            return simplifiedX.equals(new Num(1)) ? simplifiedY :
-                    (simplifiedY.equals(new Num(1)) ? simplifiedX :
-                            (simplifiedX.equals(new Num(0)) || simplifiedY.equals(new Num(0)) ? new Num(0) :
+//            return simplifiedX.toString().equals("1.0") ? simplifiedY :
+//                    (simplifiedY.toString().equals("1.0") ? simplifiedX :
+//                            (simplifiedX.toString().equals("0.0") || simplifiedY.toString().equals("0.0") ? new Num(0) :
+//                                    new Mult(simplifiedX, simplifiedY)));
+            return super.isNum(simplifiedX, 1) ? simplifiedY :
+                    (super.isNum(simplifiedY, 1) ? simplifiedX :
+                            (super.isNum(simplifiedX, 0) || isNum(simplifiedY, 0) ? new Num(0) :
                                     new Mult(simplifiedX, simplifiedY)));
         }
     }

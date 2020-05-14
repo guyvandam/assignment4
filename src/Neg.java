@@ -8,6 +8,11 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     @Override
+    public Expression getExpression() {
+        return super.getExpression();
+    }
+
+    @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         return -super.getExpression().evaluate(assignment);
     }
@@ -39,6 +44,16 @@ public class Neg extends UnaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        return null;
+//        System.out.println(super.getExpression().toString());
+//        if (super.getExpression().toString().charAt(1) == '-') {
+        Expression simplifiedExpression = super.getExpression().simplify();
+        try {
+            Neg expression = (Neg) simplifiedExpression;
+            return expression.getExpression();
+        } catch (Exception e) {
+            return this;
+
+        }
+//        }
     }
 }

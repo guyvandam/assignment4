@@ -40,6 +40,6 @@ public class Cos extends UnaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        return null;
+        return new Cos(super.getExpression().simplify());
     }
 }
