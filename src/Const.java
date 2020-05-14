@@ -1,21 +1,37 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Const implements Expression {
-    private Var var;
+    private Var name;
     private double value;
 
+    /**
+     * constructor function.
+     *
+     * @param var   a Var Object.
+     * @param value a double.
+     */
     public Const(Var var, double value) {
-        this.var = var;
+        this.name = var;
         this.value = value;
     }
 
-    public Var getVar() {
-        return var;
+    /**
+     * @return a Var Object.
+     */
+    public Var getName() {
+        return name;
     }
 
+    /**
+     * @return a double.
+     */
     public double getValue() {
         return value;
     }
@@ -32,7 +48,7 @@ public class Const implements Expression {
 
     @Override
     public List<String> getVariables() {
-        return this.getVar().getVariables();
+        return this.getName().getVariables();
     }
 
     @Override
@@ -42,7 +58,7 @@ public class Const implements Expression {
 
     @Override
     public Expression assign(String var, Expression expression) {
-        return new Const(this.getVar(), this.getValue());
+        return new Const(this.getName(), this.getValue());
     }
 
     @Override
@@ -52,6 +68,6 @@ public class Const implements Expression {
 
     @Override
     public Expression simplify() {
-        return new Const(this.getVar(),this.getValue());
+        return new Const(this.getName(), this.getValue());
     }
 }

@@ -2,7 +2,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Cos extends UnaryExpression implements Expression {
+    /**
+     * constructor function.
+     *
+     * @param expression an Expression object.
+     */
     public Cos(Expression expression) {
         super(expression);
     }
@@ -14,7 +24,6 @@ public class Cos extends UnaryExpression implements Expression {
 
     @Override
     public double evaluate() throws Exception {
-//        return Math.cos(super.getExpression().evaluate(new ));
         return this.evaluate(new TreeMap<>());
     }
 

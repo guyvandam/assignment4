@@ -2,7 +2,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Div extends BinaryExpression implements Expression {
+    /**
+     * constructor function.
+     *
+     * @param x an Expression object.
+     * @param y an Expression object.
+     */
     public Div(Expression x, Expression y) {
         super(x, y);
     }
@@ -49,8 +60,8 @@ public class Div extends BinaryExpression implements Expression {
         } catch (Exception e) {
 //            return simplifiedX.toString().equals(simplifiedY.toString()) ? new Num(1) :
 //                    (simplifiedY.toString().equals("1.0") ? simplifiedX : new Div(simplifiedX, simplifiedY));
-            return !super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1) :
-                    (super.isNum(simplifiedY,1) ? simplifiedX : new Div(simplifiedX, simplifiedY));
+            return !super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1)
+                    : (super.isNum(simplifiedY, 1) ? simplifiedX : new Div(simplifiedX, simplifiedY));
         }
     }
 }
