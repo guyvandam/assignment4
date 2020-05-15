@@ -2,7 +2,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Plus extends BinaryExpression implements Expression {
+    /**
+     * constructor method. creates the parent BinaryExpression and inherit from it.
+     *
+     * @param x an Expression object.
+     * @param y an Expression object.
+     */
     public Plus(Expression x, Expression y) {
         super(x, y);
     }
@@ -15,19 +26,8 @@ public class Plus extends BinaryExpression implements Expression {
 
     @Override
     public double evaluate() throws Exception {
-//        return super.getX().evaluate() + super.getY().evaluate();
         return this.evaluate(new TreeMap<>());
     }
-
-//    @Override
-//    public double evaluate() throws Exception {
-//        try {
-//            return super.getX().evaluate() + super.getY().evaluate();
-//        } catch (NullPointerException nullPointerException) {
-//            throw nullPointerException;
-//        }
-//    }
-
     @Override
     public List<String> getVariables() {
         return super.getVariables();
@@ -39,21 +39,8 @@ public class Plus extends BinaryExpression implements Expression {
     }
 
 
-//    @Override
-//    public Expression assign(String var, Expression expression) {
-//        if (var != null && expression != null) {
-//            if (var.equals(super.getX().toString())) {
-//                return new Plus(expression, super.getY());
-//            } else if (var.equals(super.getY().toString())) {
-//                return new Plus(super.getX(), expression);
-//            }
-//        }
-//        return this;
-//    }
-
     @Override
     public Expression assign(String var, Expression expression) {
-//        return (Plus) super.binaryAssign(var, expression);
         return new Plus(super.getX().assign(var, expression), super.getY().assign(var, expression));
     }
 
@@ -76,8 +63,8 @@ public class Plus extends BinaryExpression implements Expression {
 //            return new Plus(super.getX(), super.getY());
 //            return simplifiedX.toString().equals("0.0") ? simplifiedY :
 //                    (simplifiedY.toString().equals("0.0") ? simplifiedX : new Plus(simplifiedX, simplifiedY));
-            return super.isNum(simplifiedX, 0) ? simplifiedY :
-                    (super.isNum(simplifiedY, 0) ? simplifiedX : new Plus(simplifiedX, simplifiedY));
+            return super.isNum(simplifiedX, 0) ? simplifiedY
+                    : (super.isNum(simplifiedY, 0) ? simplifiedX : new Plus(simplifiedX, simplifiedY));
         }
 
     }

@@ -2,13 +2,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Num implements Expression {
     private double num;
 
+    /**
+     * constructor method.
+     *
+     * @param num a double. the value of the number.
+     */
     public Num(double num) {
         this.num = num;
     }
 
+    /**
+     * @return a double. the value of the number.
+     */
     public double getNum() {
         return num;
     }
@@ -26,17 +39,14 @@ public class Num implements Expression {
 
     @Override
     public List<String> getVariables() {
-//        return new ArrayList<String>() {
-//            {
-//                add(this.toString());
-//            }
-//        };
         return new ArrayList<>();
     }
 
     @Override
     public String toString() {
-        return this.getNum() == Math.floor(this.getNum()) ? String.valueOf((int) this.getNum()) : String.valueOf(this.getNum());
+        // returns a nicer string representation where integer don't have a decimal point.
+        return this.getNum() == Math.floor(this.getNum()) ? String.valueOf((int) this.getNum())
+                : String.valueOf(this.getNum());
 //        return String.valueOf(this.getNum());
     }
 

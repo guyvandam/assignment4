@@ -9,7 +9,7 @@ import java.util.TreeMap;
  */
 public class Div extends BinaryExpression implements Expression {
     /**
-     * constructor function.
+     * constructor method. creates the parent BinaryExpression and inherit from it.
      *
      * @param x an Expression object.
      * @param y an Expression object.
@@ -60,7 +60,7 @@ public class Div extends BinaryExpression implements Expression {
         } catch (Exception e) {
 //            return simplifiedX.toString().equals(simplifiedY.toString()) ? new Num(1) :
 //                    (simplifiedY.toString().equals("1.0") ? simplifiedX : new Div(simplifiedX, simplifiedY));
-            return !super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1)
+            return super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1)
                     : (super.isNum(simplifiedY, 1) ? simplifiedX : new Div(simplifiedX, simplifiedY));
         }
     }

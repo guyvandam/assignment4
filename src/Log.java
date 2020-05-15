@@ -2,14 +2,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Log extends BinaryExpression implements Expression {
+    /**
+     * constructor method. creates the parent BinaryExpression and inherit from it.
+     *
+     * @param x an Expression object. the base of the log.
+     * @param y an Expression object.
+     */
     public Log(Expression x, Expression y) {
         super(x, y);
     }
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
-//            return Math.log(super.getY().evaluate(assignment)) / Math.log(super.getX().evaluate(assignment));
         double valueOfX = super.getX().evaluate(assignment), valueOfY = super.getY().evaluate(assignment);
         if (valueOfX == 1) {
             return valueOfY;
@@ -48,7 +58,8 @@ public class Log extends BinaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
-        return new Div(super.getY().differentiate(var), new Mult(super.getY(), new Log(new Const(new Var("e"), 2.71828), super.getX())));
+        return new Div(super.getY().differentiate(var), new Mult(super.getY(), new Log(new Const(
+                new Var("e"), 2.71828), super.getX())));
     }
 
     @Override
@@ -60,9 +71,9 @@ public class Log extends BinaryExpression implements Expression {
 //            return simplifiedX.toString().equals(simplifiedY.toString()) ? new Num(1) :
 //                    (simplifiedX.toString().equals("1.0") ? simplifiedY :
 //                            simplifiedY.toString().equals("1.0") ? new Num(0) : new Log(simplifiedX, simplifiedY));
-            return !super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1) :
-                    (super.isNum(simplifiedX, 1) ? simplifiedY :
-                            super.isNum(simplifiedY, 1) ? new Num(0) : new Log(simplifiedX, simplifiedY));
+            return super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1)
+                    : (super.isNum(simplifiedX, 1) ? simplifiedY
+                    : super.isNum(simplifiedY, 1) ? new Num(0) : new Log(simplifiedX, simplifiedY));
         }
     }
 }

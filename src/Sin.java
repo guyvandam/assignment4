@@ -1,8 +1,18 @@
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Sin extends UnaryExpression implements Expression {
-
+    /**
+     * constructor method. create the parent UnaryExpression an inherit from it.
+     *
+     * @param expression an Expression object.
+     */
     public Sin(Expression expression) {
         super(expression);
     }
@@ -14,7 +24,7 @@ public class Sin extends UnaryExpression implements Expression {
 
     @Override
     public double evaluate() throws Exception {
-        return Math.sin(super.getExpression().evaluate());
+        return this.evaluate(new TreeMap<>());
     }
 
     @Override

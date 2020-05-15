@@ -1,10 +1,19 @@
-import org.w3c.dom.css.CSSUnknownRule;
-
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Minus extends BinaryExpression implements Expression {
+    /**
+     * constructor method. creates the parent BinaryExpression and inherit from it.
+     *
+     * @param x an Expression object.
+     * @param y an Expression object.
+     */
     public Minus(Expression x, Expression y) {
         super(x, y);
     }
@@ -16,7 +25,6 @@ public class Minus extends BinaryExpression implements Expression {
 
     @Override
     public double evaluate() throws Exception {
-//        return super.getX().evaluate() - super.getY().evaluate();
         return this.evaluate(new TreeMap<>());
     }
 
@@ -49,8 +57,8 @@ public class Minus extends BinaryExpression implements Expression {
         } catch (Exception e) {
 //            return simplifiedX.equals(new Num(0)) ? new Neg(simplifiedY) :
 //                    (simplifiedY.equals(new Num(0)) ? simplifiedX : new Minus(simplifiedX, simplifiedY));
-            return super.isNum(simplifiedX, 0) ? new Neg(simplifiedY) :
-                    (super.isNum(simplifiedY, 0) ? simplifiedX : new Minus(simplifiedX, simplifiedY));
+            return super.isNum(simplifiedX, 0) ? new Neg(simplifiedY)
+                    : (super.isNum(simplifiedY, 0) ? simplifiedX : new Minus(simplifiedX, simplifiedY));
         }
     }
 }

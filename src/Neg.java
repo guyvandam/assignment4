@@ -2,7 +2,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Neg extends UnaryExpression implements Expression {
+    /**
+     * constructor method. create the parent UnaryExpression an inherit from it.
+     *
+     * @param expression an Expression object.
+     */
     public Neg(Expression expression) {
         super(expression);
     }

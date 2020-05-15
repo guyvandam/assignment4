@@ -2,7 +2,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Guy Vandam 325133148 <guyvandam@gmail.com>
+ * @version 1.0
+ * @since 2020-05-14.
+ */
 public class Mult extends BinaryExpression implements Expression {
+    /**
+     * constructor method. creates the parent BinaryExpression and inherit from it.
+     *
+     * @param x an Expression object.
+     * @param y an Expression object.
+     */
     public Mult(Expression x, Expression y) {
         super(x, y);
     }
@@ -15,7 +26,6 @@ public class Mult extends BinaryExpression implements Expression {
 
     @Override
     public double evaluate() throws Exception {
-//        return super.getX().evaluate() * super.getY().evaluate();
         return this.evaluate(new TreeMap<>());
     }
 
@@ -48,12 +58,11 @@ public class Mult extends BinaryExpression implements Expression {
         } catch (Exception e) {
 //            return simplifiedX.toString().equals("1.0") ? simplifiedY :
 //                    (simplifiedY.toString().equals("1.0") ? simplifiedX :
-//                            (simplifiedX.toString().equals("0.0") || simplifiedY.toString().equals("0.0") ? new Num(0) :
-//                                    new Mult(simplifiedX, simplifiedY)));
-            return super.isNum(simplifiedX, 1) ? simplifiedY :
-                    (super.isNum(simplifiedY, 1) ? simplifiedX :
-                            (super.isNum(simplifiedX, 0) || isNum(simplifiedY, 0) ? new Num(0) :
-                                    new Mult(simplifiedX, simplifiedY)));
+//                            :new Mult(simplifiedX, simplifiedY)));
+            return super.isNum(simplifiedX, 1) ? simplifiedY
+                    : (super.isNum(simplifiedY, 1) ? simplifiedX
+                    : (super.isNum(simplifiedX, 0) || isNum(simplifiedY, 0) ? new Num(0)
+                    : new Mult(simplifiedX, simplifiedY)));
         }
     }
 

@@ -9,7 +9,7 @@ import java.util.TreeMap;
  */
 public class Cos extends UnaryExpression implements Expression {
     /**
-     * constructor function.
+     * constructor method. create the parent UnaryExpression an inherit from it.
      *
      * @param expression an Expression object.
      */
