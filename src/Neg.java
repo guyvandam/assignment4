@@ -61,8 +61,7 @@ public class Neg extends UnaryExpression implements Expression {
             Neg expression = (Neg) simplifiedExpression;
             return expression.getExpression();
         } catch (Exception e) {
-            return this;
-
+            return super.isNum(simplifiedExpression, 0) ? new Num(0) : new Neg(super.getExpression());
         }
 //        }
     }

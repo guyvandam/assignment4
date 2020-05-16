@@ -19,7 +19,7 @@ public class Cos extends UnaryExpression implements Expression {
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
-        return Math.cos(super.getExpression().evaluate(assignment));
+        return Math.cos(Math.toRadians(super.getExpression().evaluate(assignment)));
     }
 
     @Override
@@ -49,6 +49,7 @@ public class Cos extends UnaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        return new Cos(super.getExpression().simplify());
+        Expression simplifiedExpression = super.getExpression().simplify();
+        return super.isNum(simplifiedExpression, 0) ? new Num(1) : new Cos(simplifiedExpression);
     }
 }

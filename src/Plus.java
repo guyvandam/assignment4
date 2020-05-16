@@ -28,6 +28,7 @@ public class Plus extends BinaryExpression implements Expression {
     public double evaluate() throws Exception {
         return this.evaluate(new TreeMap<>());
     }
+
     @Override
     public List<String> getVariables() {
         return super.getVariables();
@@ -64,7 +65,9 @@ public class Plus extends BinaryExpression implements Expression {
 //            return simplifiedX.toString().equals("0.0") ? simplifiedY :
 //                    (simplifiedY.toString().equals("0.0") ? simplifiedX : new Plus(simplifiedX, simplifiedY));
             return super.isNum(simplifiedX, 0) ? simplifiedY
-                    : (super.isNum(simplifiedY, 0) ? simplifiedX : new Plus(simplifiedX, simplifiedY));
+                    : (super.isNum(simplifiedY, 0) ? simplifiedX
+                    : (super.isEqualExpression(simplifiedX, simplifiedY) ? new Mult(new Num(2), simplifiedY)
+                    : new Plus(simplifiedX, simplifiedY)));
         }
 
     }

@@ -39,12 +39,14 @@ public abstract class BaseExpression implements Expression {
 //
 //    }
 
+    /**
+     * checks if 2 expressions are equal base on their toString.
+     *
+     * @param e1 an Expression object.
+     * @param e2 an Expression object.
+     * @return a boolean. true if the expressions are 'equal'. false otherwise.
+     */
     public boolean isEqualExpression(Expression e1, Expression e2) {
-
-//        return null == e1 || e2 == null || !e1.toString().equals(e2.toString());
-        if (e1 == null || e2 == null) {
-            return false;
-        }
 //        try {
 //            return e1.evaluate() == e2.evaluate();
 //        } catch (Exception exception) {
@@ -56,7 +58,7 @@ public abstract class BaseExpression implements Expression {
 //        if (e1 == null || e2 == null) {
 //            return false;
 //        }
-        return e1.toString().equals(e2.toString()); // the best we can do...
+        return e1 != null && e2 != null && e1.toString().equals(e2.toString()); // the best we can do...
     }
 
 }

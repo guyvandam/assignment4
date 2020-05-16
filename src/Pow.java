@@ -64,9 +64,16 @@ public class Pow extends BinaryExpression implements Expression {
 //            return simplifiedX.toString().equals("1.0") || simplifiedX.equals(new Num(1)) ? simplifiedX :
 //                    (simplifiedY.equals(new Num(0)) ? new Num(0) :
 //                            (simplifiedY.equals(new Num(1)) ? simplifiedX : new Pow(simplifiedX, simplifiedY)));
+//            try {
+//                simplifiedY = (Pow) simplifiedY;
+//                super.isEqualExpression(simplifiedY, ((Pow) simplifiedY).getY());
+//                return new Pow(simplifiedX, new Mult(simplifiedY, ((Pow) simplifiedY).getX()));
+//            } catch (Exception exception) {
             return super.isNum(simplifiedX, 1) || super.isNum(simplifiedX, 0) ? simplifiedX
                     : (super.isNum(simplifiedY, 0) ? new Num(1)
                     : (super.isNum(simplifiedY, 1) ? simplifiedX : new Pow(simplifiedX, simplifiedY)));
+//            }
+
         }
 
     }

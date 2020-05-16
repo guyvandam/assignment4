@@ -62,7 +62,8 @@ public class Mult extends BinaryExpression implements Expression {
             return super.isNum(simplifiedX, 1) ? simplifiedY
                     : (super.isNum(simplifiedY, 1) ? simplifiedX
                     : (super.isNum(simplifiedX, 0) || isNum(simplifiedY, 0) ? new Num(0)
-                    : new Mult(simplifiedX, simplifiedY)));
+                    : (super.isEqualExpression(simplifiedX, simplifiedY) ? new Pow(simplifiedX, new Num(2)).simplify()
+                    : new Mult(simplifiedX, simplifiedY))));
         }
     }
 

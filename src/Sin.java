@@ -19,7 +19,7 @@ public class Sin extends UnaryExpression implements Expression {
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
-        return Math.sin(super.getExpression().evaluate(assignment));
+        return Math.sin(Math.toRadians(super.getExpression().evaluate(assignment)));
     }
 
     @Override
@@ -49,6 +49,7 @@ public class Sin extends UnaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        return new Sin(super.getExpression().simplify());
+        Expression simplifiedExpression = super.getExpression().simplify();
+        return super.isNum(simplifiedExpression, 0) ? new Num(0) : new Sin(simplifiedExpression);
     }
 }
