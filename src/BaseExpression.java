@@ -25,7 +25,7 @@ public abstract class BaseExpression implements Expression {
      * @param num a double.
      * @return a boolean. true if the input expression represents a number, false otherwise.
      */
-    public boolean isNum(Expression e, double num) {
+    protected boolean isNum(Expression e, double num) {
 //        return e.toString().equals(String.valueOf(num));
         return num == Math.floor(num) ? e.toString().equals(String.valueOf((int) num))
                 : e.toString().equals(String.valueOf(num));
@@ -46,7 +46,7 @@ public abstract class BaseExpression implements Expression {
      * @param e2 an Expression object.
      * @return a boolean. true if the expressions are 'equal'. false otherwise.
      */
-    public boolean isEqualExpression(Expression e1, Expression e2) {
+    protected boolean isEqualExpression(Expression e1, Expression e2) {
 //        try {
 //            return e1.evaluate() == e2.evaluate();
 //        } catch (Exception exception) {

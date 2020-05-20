@@ -19,7 +19,7 @@ public abstract class BinaryExpression extends BaseExpression {
      * @param x an Expression object.
      * @param y an Expression object.
      */
-    public BinaryExpression(Expression x, Expression y) {
+    protected BinaryExpression(Expression x, Expression y) {
         this.x = x;
         this.y = y;
     }
@@ -28,14 +28,14 @@ public abstract class BinaryExpression extends BaseExpression {
     /**
      * @return an Expression object.
      */
-    public Expression getX() {
+    protected Expression getX() {
         return x;
     }
 
     /**
      * @return an Expression object.
      */
-    public Expression getY() {
+    protected Expression getY() {
         return y;
     }
 
