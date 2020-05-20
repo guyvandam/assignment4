@@ -13,7 +13,7 @@ public abstract class UnaryExpression extends BaseExpression {
      *
      * @param expression an Expression object.
      */
-    protected UnaryExpression(Expression expression) {
+    private UnaryExpression(Expression expression) {
         this.expression = expression;
     }
 
