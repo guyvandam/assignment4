@@ -18,6 +18,18 @@ public class Minus extends BinaryExpression implements Expression {
         super(x, y);
     }
 
+    public Minus(int i, String x) {
+        super(i,x);
+    }
+
+    public Minus(String x, int i) {
+        super(x,i);
+    }
+
+    public Minus(String x, String x1) {
+        super(x,x1);
+    }
+
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         return super.getX().evaluate(assignment) - super.getY().evaluate(assignment);
@@ -55,8 +67,6 @@ public class Minus extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-//            return simplifiedX.equals(new Num(0)) ? new Neg(simplifiedY) :
-//                    (simplifiedY.equals(new Num(0)) ? simplifiedX : new Minus(simplifiedX, simplifiedY));
             return super.isNum(simplifiedX, 0) ? new Neg(simplifiedY)
                     : (super.isNum(simplifiedY, 0) ? simplifiedX : new Minus(simplifiedX, simplifiedY));
         }

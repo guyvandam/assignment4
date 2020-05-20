@@ -18,6 +18,14 @@ public class Plus extends BinaryExpression implements Expression {
         super(x, y);
     }
 
+    public Plus(double x, double y) {
+        super(new Num(x), new Num(y));
+    }
+
+    public Plus(double x, String y) {
+        super(new Num(x), new Var(y));
+    }
+
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         return super.getX().evaluate(assignment) + super.getY().evaluate(assignment);
@@ -56,14 +64,6 @@ public class Plus extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-//            if (super.getX().equals(new Num(0))) {
-//                return super.getX();
-//            } else if (super.getY().equals(new Num(0))) {
-//                return super.getY();
-//            }
-//            return new Plus(super.getX(), super.getY());
-//            return simplifiedX.toString().equals("0.0") ? simplifiedY :
-//                    (simplifiedY.toString().equals("0.0") ? simplifiedX : new Plus(simplifiedX, simplifiedY));
             return super.isNum(simplifiedX, 0) ? simplifiedY
                     : (super.isNum(simplifiedY, 0) ? simplifiedX
                     : (super.isEqualExpression(simplifiedX, simplifiedY) ? new Mult(new Num(2), simplifiedY)

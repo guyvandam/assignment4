@@ -18,6 +18,18 @@ public class Div extends BinaryExpression implements Expression {
         super(x, y);
     }
 
+    public Div(int i, int i1) {
+        super(i,i1);
+    }
+
+    public Div(int i, String x) {
+        super(i,x);
+    }
+
+    public Div(String x, String x1) {
+        super(x,x1);
+    }
+
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         return super.getX().evaluate(assignment) / super.getY().evaluate(assignment);
@@ -49,7 +61,7 @@ public class Div extends BinaryExpression implements Expression {
     @Override
     public Expression differentiate(String var) {
         return new Div(new Minus(new Mult(super.getX().differentiate(var), super.getY()), new Mult(super.getX(),
-                super.getY().differentiate(var))), new Pow(super.getX(), new Num(2)));
+                super.getY().differentiate(var))), new Pow(super.getY(), new Num(2)));
     }
 
     @Override
@@ -58,8 +70,6 @@ public class Div extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-//            return simplifiedX.toString().equals(simplifiedY.toString()) ? new Num(1) :
-//                    (simplifiedY.toString().equals("1.0") ? simplifiedX : new Div(simplifiedX, simplifiedY));
             return super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1)
                     : (super.isNum(simplifiedY, 1) ? simplifiedX : new Div(simplifiedX, simplifiedY));
         }

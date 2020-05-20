@@ -54,14 +54,12 @@ public class Neg extends UnaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-//        System.out.println(super.getExpression().toString());
-//        if (super.getExpression().toString().charAt(1) == '-') {
         Expression simplifiedExpression = super.getExpression().simplify();
         try {
             Neg expression = (Neg) simplifiedExpression;
             return expression.getExpression();
         } catch (Exception e) {
-            return super.isNum(simplifiedExpression, 0) ? new Num(0) : new Neg(super.getExpression());
+            return super.isNum(simplifiedExpression, 0) ? new Num(0) : new Neg(simplifiedExpression);
         }
 //        }
     }

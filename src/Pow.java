@@ -52,7 +52,6 @@ public class Pow extends BinaryExpression implements Expression {
         return new Mult(new Pow(this.getX(), this.getY()), new Plus(new Mult(super.getX().differentiate(var),
                 new Div(super.getY(), super.getX())), new Mult(super.getY().differentiate(var),
                 new Log(new Const(new Var("e"), 2.71828), super.getX()))));
-//                new Log(new Var("e"), super.getX()))));
     }
 
     @Override
@@ -61,14 +60,6 @@ public class Pow extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-//            return simplifiedX.toString().equals("1.0") || simplifiedX.equals(new Num(1)) ? simplifiedX :
-//                    (simplifiedY.equals(new Num(0)) ? new Num(0) :
-//                            (simplifiedY.equals(new Num(1)) ? simplifiedX : new Pow(simplifiedX, simplifiedY)));
-//            try {
-//                simplifiedY = (Pow) simplifiedY;
-//                super.isEqualExpression(simplifiedY, ((Pow) simplifiedY).getY());
-//                return new Pow(simplifiedX, new Mult(simplifiedY, ((Pow) simplifiedY).getX()));
-//            } catch (Exception exception) {
             return super.isNum(simplifiedX, 1) || super.isNum(simplifiedX, 0) ? simplifiedX
                     : (super.isNum(simplifiedY, 0) ? new Num(1)
                     : (super.isNum(simplifiedY, 1) ? simplifiedX : new Pow(simplifiedX, simplifiedY)));

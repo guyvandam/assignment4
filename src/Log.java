@@ -18,6 +18,18 @@ public class Log extends BinaryExpression implements Expression {
         super(x, y);
     }
 
+    public Log(int i, int i1) {
+        super(i,i1);
+    }
+
+    public Log(int i, String x) {
+        super(i,x);
+    }
+
+    public Log(String x, String x1) {
+        super(x,x1);
+    }
+
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         double valueOfX = super.getX().evaluate(assignment), valueOfY = super.getY().evaluate(assignment);
@@ -68,9 +80,6 @@ public class Log extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-//            return simplifiedX.toString().equals(simplifiedY.toString()) ? new Num(1) :
-//                    (simplifiedX.toString().equals("1.0") ? simplifiedY :
-//                            simplifiedY.toString().equals("1.0") ? new Num(0) : new Log(simplifiedX, simplifiedY));
             return super.isEqualExpression(simplifiedX, simplifiedY) ? new Num(1)
                     : (super.isNum(simplifiedX, 1) ? simplifiedY
                     : super.isNum(simplifiedY, 1) ? new Num(0) : new Log(simplifiedX, simplifiedY));

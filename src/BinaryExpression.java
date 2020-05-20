@@ -10,8 +10,6 @@ import java.util.List;
 public abstract class BinaryExpression extends BaseExpression {
     private Expression x;
     private Expression y;
-//    private BaseExpression x;
-//    private BaseExpression y;
 
     /**
      * constructor function.
@@ -24,6 +22,25 @@ public abstract class BinaryExpression extends BaseExpression {
         this.y = y;
     }
 
+    protected BinaryExpression(double x, double y) {
+        this.x = new Num(x);
+        this.y = new Num(y);
+    }
+
+    protected BinaryExpression(double x, String y) {
+        this.x = new Num(x);
+        this.y = new Var(y);
+    }
+
+    protected BinaryExpression(String x, double y) {
+        this.x = new Var(x);
+        this.y = new Num(y);
+    }
+
+    protected BinaryExpression(String x, String y) {
+        this.x = new Var(x);
+        this.y = new Var(y);
+    }
 
     /**
      * @return an Expression object.

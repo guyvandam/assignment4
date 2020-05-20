@@ -18,6 +18,14 @@ public class Mult extends BinaryExpression implements Expression {
         super(x, y);
     }
 
+    public Mult(int i, int i1) {
+        super(i,i1);
+    }
+
+    public Mult(int i, String x) {
+        super(i,x);
+    }
+
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {
         return super.getX().evaluate(assignment) * super.getY().evaluate(assignment);
@@ -56,9 +64,6 @@ public class Mult extends BinaryExpression implements Expression {
         try {
             return new Num(this.evaluate());
         } catch (Exception e) {
-//            return simplifiedX.toString().equals("1.0") ? simplifiedY :
-//                    (simplifiedY.toString().equals("1.0") ? simplifiedX :
-//                            :new Mult(simplifiedX, simplifiedY)));
             return super.isNum(simplifiedX, 1) ? simplifiedY
                     : (super.isNum(simplifiedY, 1) ? simplifiedX
                     : (super.isNum(simplifiedX, 0) || isNum(simplifiedY, 0) ? new Num(0)
