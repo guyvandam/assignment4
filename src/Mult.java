@@ -18,13 +18,6 @@ public class Mult extends BinaryExpression implements Expression {
         super(x, y);
     }
 
-    public Mult(int i, int i1) {
-        super(i,i1);
-    }
-
-    public Mult(int i, String x) {
-        super(i,x);
-    }
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {

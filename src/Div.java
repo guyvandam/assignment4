@@ -18,17 +18,6 @@ public class Div extends BinaryExpression implements Expression {
         super(x, y);
     }
 
-    public Div(int i, int i1) {
-        super(i,i1);
-    }
-
-    public Div(int i, String x) {
-        super(i,x);
-    }
-
-    public Div(String x, String x1) {
-        super(x,x1);
-    }
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {

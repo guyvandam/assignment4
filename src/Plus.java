@@ -18,13 +18,6 @@ public class Plus extends BinaryExpression implements Expression {
         super(x, y);
     }
 
-    public Plus(double x, double y) {
-        super(new Num(x), new Num(y));
-    }
-
-    public Plus(double x, String y) {
-        super(new Num(x), new Var(y));
-    }
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {

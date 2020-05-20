@@ -18,17 +18,6 @@ public class Minus extends BinaryExpression implements Expression {
         super(x, y);
     }
 
-    public Minus(int i, String x) {
-        super(i,x);
-    }
-
-    public Minus(String x, int i) {
-        super(x,i);
-    }
-
-    public Minus(String x, String x1) {
-        super(x,x1);
-    }
 
     @Override
     public double evaluate(Map<String, Double> assignment) throws Exception {

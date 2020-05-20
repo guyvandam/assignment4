@@ -53,7 +53,7 @@ public class Const implements Expression {
 
     @Override
     public String toString() {
-        return "e";
+        return this.getName().toString();
     }
 
     @Override

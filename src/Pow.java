@@ -63,8 +63,6 @@ public class Pow extends BinaryExpression implements Expression {
             return super.isNum(simplifiedX, 1) || super.isNum(simplifiedX, 0) ? simplifiedX
                     : (super.isNum(simplifiedY, 0) ? new Num(1)
                     : (super.isNum(simplifiedY, 1) ? simplifiedX : new Pow(simplifiedX, simplifiedY)));
-//            }
-
         }
 
     }
